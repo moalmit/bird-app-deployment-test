@@ -11,6 +11,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
+# postgresql://myname:MuEP6csmZvwzxOL8FxH5BK4ZZO8fcNom@dpg-cjuneud175es73aine90-a.oregon-postgres.render.com/bird_app_5pha
+
 migrate = Migrate(app, db)
 db.init_app(app)
 
@@ -23,3 +25,6 @@ class Birds(Resource):
         return make_response(jsonify(birds), 200)
 
 api.add_resource(Birds, '/birds')
+
+if __name__ == '__main__':
+    app.run(port=5555, debug=True)
